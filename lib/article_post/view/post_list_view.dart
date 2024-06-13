@@ -43,8 +43,12 @@ class _PostListViewState extends State<PostListView> {
                           radius: 30,
                           child: Text(post.id.toString()),
                         ),
-                        title: Text(post.title),
-                        subtitle: Text(post.body),
+                        title: Text(post.title.length > 50
+                            ? '${post.title.substring(0, 50)}...'
+                            : post.title),
+                        subtitle: Text(post.body.length > 50
+                            ? '${post.body.substring(0, 50)}...'
+                            : post.body),
                         onLongPress: () {
                           _showDeleteConfirmationDialog(context, post.id);
                         },
